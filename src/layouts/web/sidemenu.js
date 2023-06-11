@@ -17,9 +17,9 @@ import {
 import { Logo } from "src/components/logo";
 import { Scrollbar } from "src/components/scrollbar";
 import { items } from "./config";
-import { SideNavItem } from "./side-nav-item";
+import { SideMenuItem } from "./sidemenu-item";
 
-export const SideNav = (props) => {
+export const SideMenu = (props) => {
   const { open, onClose } = props;
   const pathname = usePathname();
   const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg"));
@@ -102,7 +102,7 @@ export const SideNav = (props) => {
               const active = item.path ? pathname === item.path : false;
 
               return (
-                <SideNavItem
+                <SideMenuItem
                   active={active}
                   disabled={item.disabled}
                   external={item.external}
@@ -165,7 +165,9 @@ export const SideNav = (props) => {
     return (
       <Drawer
         anchor="left"
-        open
+        // onClose={onClose}
+        // open={open}
+        // open
         PaperProps={{
           sx: {
             backgroundColor: "#132a54",
@@ -173,7 +175,8 @@ export const SideNav = (props) => {
             width: 280,
           },
         }}
-        variant="permanent"
+        sx={{ zIndex: (theme) => theme.zIndex.appBar + 100 }}
+        variant="temporary"
       >
         {content}
       </Drawer>
@@ -200,7 +203,7 @@ export const SideNav = (props) => {
   );
 };
 
-SideNav.propTypes = {
+SideMenu.propTypes = {
   onClose: PropTypes.func,
   open: PropTypes.bool,
 };
