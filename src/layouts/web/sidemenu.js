@@ -27,9 +27,9 @@ export const SideMenu = (props) => {
   const content = (
     <Scrollbar
       sx={{
-        height: "100%",
+        height: "100vh",
         "& .simplebar-content": {
-          height: "100%",
+          height: "100vh",
         },
         "& .simplebar-scrollbar:before": {
           background: "neutral.400",
@@ -122,25 +122,8 @@ export const SideMenu = (props) => {
             py: 3,
           }}
         >
-          <Typography color="neutral.100" variant="subtitle2">
-            Kedsports 2023
-          </Typography>
-          <Typography color="neutral.500" variant="body2">
-            Sports for all!
-          </Typography>
-          <Box
-            sx={{
-              display: "flex",
-              mt: 2,
-              mx: "auto",
-              width: "160px",
-              "& img": {
-                width: "100%",
-              },
-            }}
-          >
-            <img alt="" src="/assets/devias-kit-pro.png" />
-          </Box>
+        
+          
           <Button
             component="a"
             endIcon={

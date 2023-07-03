@@ -1,16 +1,17 @@
-import { createContext, useContext, useEffect, useReducer, useRef } from 'react';
-import PropTypes from 'prop-types';
+import { createContext, useContext, useEffect, useReducer, useRef } from "react";
+import PropTypes from "prop-types";
 
 const HANDLERS = {
-  INITIALIZE: 'INITIALIZE',
-  SIGN_IN: 'SIGN_IN',
-  SIGN_OUT: 'SIGN_OUT'
+  INITIALIZE: "INITIALIZE",
+  SIGN_IN: "SIGN_IN",
+  SIGN_OUT: "SIGN_OUT",
 };
 
 const initialState = {
   isAuthenticated: false,
   isLoading: true,
-  user: null
+  usertype: null,
+  user: null,
 };
 
 const handlers = {
@@ -19,41 +20,39 @@ const handlers = {
 
     return {
       ...state,
-      ...(
-        // if payload (user) is provided, then is authenticated
-        user
-          ? ({
+      ...// if payload (user) is provided, then is authenticated
+      (user
+        ? {
             isAuthenticated: true,
             isLoading: false,
-            user
-          })
-          : ({
-            isLoading: false
-          })
-      )
+            user,
+          }
+        : {
+            isLoading: false,
+          }),
     };
   },
   [HANDLERS.SIGN_IN]: (state, action) => {
     const user = action.payload;
+    console.log(user);
 
     return {
       ...state,
       isAuthenticated: true,
-      user
+      user,
     };
   },
   [HANDLERS.SIGN_OUT]: (state) => {
     return {
       ...state,
       isAuthenticated: false,
-      user: null
+      user: "",
     };
-  }
+  },
 };
 
-const reducer = (state, action) => (
-  handlers[action.type] ? handlers[action.type](state, action) : state
-);
+const reducer = (state, action) =>
+  handlers[action.type] ? handlers[action.type](state, action) : state;
 
 // The role of this context is to propagate authentication state through the App tree.
 
@@ -75,26 +74,27 @@ export const AuthProvider = (props) => {
     let isAuthenticated = false;
 
     try {
-      isAuthenticated = window.sessionStorage.getItem('authenticated') === 'true';
+      isAuthenticated = window.sessionStorage.getItem("authenticated") === "true";
     } catch (err) {
       console.error(err);
     }
 
     if (isAuthenticated) {
       const user = {
-        id: '5e86809283e28b96d2d38537',
-        avatar: '/assets/avatars/avatar-anika-visser.png',
-        name: 'Anika Visser',
-        email: 'anika.visser@devias.io'
+        id: "5e86809283e28b96d2d38537",
+        avatar: "/assets/avatars/avatar-anika-visser.png",
+        name: "Kedsports User0",
+        usertype: 2,
+        email: "user1@kedsports.in",
       };
 
       dispatch({
         type: HANDLERS.INITIALIZE,
-        payload: user
+        payload: user,
       });
     } else {
       dispatch({
-        type: HANDLERS.INITIALIZE
+        type: HANDLERS.INITIALIZE,
       });
     }
   };
@@ -109,55 +109,81 @@ export const AuthProvider = (props) => {
 
   const skip = () => {
     try {
-      window.sessionStorage.setItem('authenticated', 'true');
+      window.sessionStorage.setItem("authenticated", "false");
     } catch (err) {
       console.error(err);
     }
 
-    const user = {
-      id: '5e86809283e28b96d2d38537',
-      avatar: '/assets/avatars/avatar-anika-visser.png',
-      name: 'Anika Visser',
-      email: 'anika.visser@devias.io'
-    };
+    // const user = {
+    //   id: "5e86809283e28b96d2d38537",
+    //   avatar: "/assets/avatars/avatar-anika-visser.png",
+    //   name: "Kedsports User2",
+    //   email: "user@kedsports.in",
+    // };
 
-    dispatch({
-      type: HANDLERS.SIGN_IN,
-      payload: user
-    });
+    // dispatch({
+    //   type: HANDLERS.SIGN_IN,
+    //   payload: user,
+    // });
   };
 
-  const signIn = async (email, password) => {
-    if (email !== 'demo@devias.io' || password !== 'Password123!') {
-      throw new Error('Please check your email and password');
+  const adminSignIn = async (email, password) => {
+    if (email !== "user@kedsports.in" || password !== "Pass123") {
+      throw new Error("Please check your email and password");
     }
 
     try {
-      window.sessionStorage.setItem('authenticated', 'true');
+      window.sessionStorage.setItem("authenticated", "true");
     } catch (err) {
       console.error(err);
     }
 
     const user = {
-      id: '5e86809283e28b96d2d38537',
-      avatar: '/assets/avatars/avatar-anika-visser.png',
-      name: 'Anika Visser',
-      email: 'anika.visser@devias.io'
+      id: "5e86809283e28b96d2d38537",
+      avatar: "/assets/avatars/avatar-cao-yu.png",
+      name: "Kedsports Admin3",
+      usertype: 1,
+      email: "user@kedsports.in",
     };
 
     dispatch({
       type: HANDLERS.SIGN_IN,
-      payload: user
+      payload: user,
+    });
+  };
+
+  const studentSignIn = async (email, otp) => {
+    if (email !== "user@kedsports.in" || otp !== "4321") {
+      throw new Error("Please check your OTP and password");
+    }
+
+    try {
+      window.sessionStorage.setItem("authenticated", "true");
+    } catch (err) {
+      console.error(err);
+    }
+
+    const user = {
+      id: "5e86809283e28b96d2d38537",
+      avatar: "/assets/avatars/avatar-anika-visser.png",
+      name: "Kedsports Student 1",
+      usertype: 2,
+      email: "user@kedsports.in",
+    };
+
+    dispatch({
+      type: HANDLERS.SIGN_IN,
+      payload: user,
     });
   };
 
   const signUp = async (email, name, password) => {
-    throw new Error('Sign up is not implemented');
+    throw new Error("Sign up is prohibited!");
   };
 
   const signOut = () => {
     dispatch({
-      type: HANDLERS.SIGN_OUT
+      type: HANDLERS.SIGN_OUT,
     });
   };
 
@@ -165,10 +191,12 @@ export const AuthProvider = (props) => {
     <AuthContext.Provider
       value={{
         ...state,
+        handlers,
         skip,
-        signIn,
+        adminSignIn,
+        studentSignIn,
         signUp,
-        signOut
+        signOut,
       }}
     >
       {children}
@@ -177,7 +205,7 @@ export const AuthProvider = (props) => {
 };
 
 AuthProvider.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export const AuthConsumer = AuthContext.Consumer;

@@ -10,7 +10,7 @@ import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
-import { red } from "@mui/material/colors";
+
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff000",
@@ -49,7 +49,7 @@ const Page = () => (
             justifyContent: "center",
             alignItems: "center",
             width: "100%",
-            height: "300px",
+            height: "400px",
           }}
         >
           <Imgcarousel />

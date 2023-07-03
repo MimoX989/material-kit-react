@@ -5,6 +5,7 @@ import { styled } from '@mui/material/styles';
 import React from "react";
 import { SideMenu } from './sidemenu';
 import { padding } from "@mui/system";
+import { Footer } from "./footer";
 
 const SIDE_NAV_WIDTH = 0;
 
@@ -58,6 +59,7 @@ export const Layout = (props) => {
           {children}
         </LayoutContainer>
       </LayoutRoot>
+      <Footer/>
     </>
   );
 };

@@ -27,6 +27,7 @@ export function createPalette() {
     success,
     text: {
       logo:"#F2F4F7",
+      toplink:"#F2F4F7",
       primary: neutral[900],
       secondary: neutral[500],
       disabled: alpha(neutral[900], 0.38),

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import NextLink from 'next/link';
+import Image from "next/image";
 import { Box, Typography, Unstable_Grid2 as Grid } from '@mui/material';
-import { Logo } from 'src/components/logo';
 
 // TODO: Change subtitle text
 
@@ -49,7 +49,8 @@ export const Layout = (props) => {
                 width: 32
               }}
             >
-              <Logo />
+              
+              <Image src="/assets/kedsport-logo.png" width={50} height={50} alt="Kedsport Logo" />
             </Box>
           </Box>
           {children}
@@ -97,7 +98,7 @@ export const Layout = (props) => {
             </Typography>
             <img
               alt=""
-              src="/assets/auth-illustration.svg"
+              src="/assets/kedsport-logo.png"
             />
           </Box>
         </Grid>

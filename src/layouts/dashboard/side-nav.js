@@ -65,7 +65,7 @@ export const SideNav = (props) => {
                 width: 32,
               }}
             >
-              <Logo />
+              <img height="32px" width="32px" alt="" src="/kedsports-favicon.png"/>
             </Box>
             <div>
               <Typography color="indigo" variant="subtitle1">
@@ -139,7 +139,7 @@ export const SideNav = (props) => {
               },
             }}
           >
-            <img alt="" src="/assets/devias-kit-pro.png" />
+            <img alt="" src="/kedsports-favicon.png" />
           </Box>
           <Button
             component="a"

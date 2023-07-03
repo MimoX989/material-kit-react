@@ -1,13 +1,14 @@
 import PropTypes from "prop-types";
 import Image from "next/image";
-import Link from "next/link";
 import BellIcon from "@heroicons/react/24/solid/BellIcon";
 import UsersIcon from "@heroicons/react/24/solid/UsersIcon";
 import Bars3Icon from "@heroicons/react/24/solid/Bars3Icon";
 import {
   Avatar,
   Badge,
+  Button,
   Box,
+  Link,
   IconButton,
   Stack,
   SvgIcon,
@@ -18,7 +19,6 @@ import {
 import { alpha } from "@mui/material/styles";
 import { usePopover } from "src/hooks/use-popover";
 import { AccountPopover } from "src/layouts/dashboard/account-popover";
-
 
 const SIDE_NAV_WIDTH = 0;
 const TOP_NAV_HEIGHT = 64;
@@ -42,7 +42,7 @@ export const TopNavbar = (props) => {
           },
           top: 0,
           width: {
-            lg: `calc(100% - ${SIDE_NAV_WIDTH}px)`
+            lg: `calc(100% - ${SIDE_NAV_WIDTH}px)`,
           },
           zIndex: (theme) => theme.zIndex.appBar,
         }}
@@ -73,33 +73,25 @@ export const TopNavbar = (props) => {
                 </SvgIcon>
               </IconButton>
             </Tooltip> */}
-            <Typography 
-            variant="h3"
-            color="text.logo">
+            <Typography variant="h3" color="text.logo">
               Kedsports
             </Typography>
           </Stack>
-          <Stack alignItems="center" direction="row" spacing={2}>
-            
-            <Link className="top-link" href={"/web/home"}>
-            <Typography  variant="body1"
-            color="text.logo">
-              Home
-            </Typography>
-            </Link>
-            <Link className="top-link" href={"/web/contact"}>
-            <Typography  variant="body1"
-            color="text.logo">
-              Contact Us
-            </Typography>
-            </Link>
-            <Link className="top-link" href={"/web/about"}>
-            <Typography  variant="body1"
-            color="text.logo">
-              About
-            </Typography>
-            </Link>
-            
+          <Stack alignItems="center" direction="row" spacing={5}>
+            {lgUp && (
+              <Stack alignItems="center" direction="row" spacing={2}>
+                <Link variant="body1" color="text.toplink" underline="hover" href={"/web/home"}>
+                  Home
+                </Link>
+                <Link variant="body1" color="text.toplink" underline="hover" href={"/web/contact"}>
+                  Contact
+                </Link>
+                <Link variant="body1" color="text.toplink" underline="hover" href={"/web/about"}>
+                  About Us
+                </Link>
+              </Stack>
+            )}
+
             {/* <Tooltip title="Notifications">
               <IconButton>
                 <Badge badgeContent={4} color="success" variant="dot">
@@ -109,16 +101,21 @@ export const TopNavbar = (props) => {
                 </Badge>
               </IconButton>
             </Tooltip> */}
-            <Avatar
-              onClick={accountPopover.handleOpen}
-              ref={accountPopover.anchorRef}
-              sx={{
-                cursor: "pointer",
-                height: 40,
-                width: 40,
-              }}
-              src="/assets/avatars/avatar-anika-visser.png"
-            />
+            <Stack alignItems="center" direction="row" spacing={2}>
+              <Button variant="contained" href="/auth/login">
+                Login
+              </Button>
+              <Avatar
+                onClick={accountPopover.handleOpen}
+                ref={accountPopover.anchorRef}
+                sx={{
+                  cursor: "pointer",
+                  height: 40,
+                  width: 40,
+                }}
+                src="/assets/avatars/avatar-cao-yu.png"
+              />
+            </Stack>
           </Stack>
         </Stack>
       </Box>

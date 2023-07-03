@@ -10,8 +10,8 @@ import { SvgIcon } from "@mui/material";
 
 export const items = [
   {
-    title: "Overview",
-    path: "/",
+    title: "Home",
+    path: "./home",
     icon: (
       <SvgIcon fontSize="small">
         <ChartBarIcon />
@@ -19,8 +19,8 @@ export const items = [
     ),
   },
   {
-    title: "Customers",
-    path: "/customers",
+    title: "Contact Us",
+    path: "./contact",
     icon: (
       <SvgIcon fontSize="small">
         <UsersIcon />
@@ -28,57 +28,49 @@ export const items = [
     ),
   },
   {
-    title: "Companies",
-    path: "/companies",
+    title: "About Us",
+    path: "./about",
     icon: (
       <SvgIcon fontSize="small">
         <ShoppingBagIcon />
       </SvgIcon>
     ),
   },
-  {
-    title: "Account",
-    path: "/account",
-    icon: (
-      <SvgIcon fontSize="small">
-        <UserIcon />
-      </SvgIcon>
-    ),
-  },
-  {
-    title: "Settings",
-    path: "/settings",
-    icon: (
-      <SvgIcon fontSize="small">
-        <CogIcon />
-      </SvgIcon>
-    ),
-  },
-  {
-    title: "Login",
-    path: "/auth/login",
-    icon: (
-      <SvgIcon fontSize="small">
-        <LockClosedIcon />
-      </SvgIcon>
-    ),
-  },
-  {
-    title: "Register",
-    path: "/auth/register",
-    icon: (
-      <SvgIcon fontSize="small">
-        <UserPlusIcon />
-      </SvgIcon>
-    ),
-  },
-  {
-    title: "Error",
-    path: "/404",
-    icon: (
-      <SvgIcon fontSize="small">
-        <XCircleIcon />
-      </SvgIcon>
-    ),
-  },
+  // {
+  //   title: "Account",
+  //   path: "/account",
+  //   icon: (
+  //     <SvgIcon fontSize="small">
+  //       <UserIcon />
+  //     </SvgIcon>
+  //   ),
+  // },
+  // {
+  //   title: "Settings",
+  //   path: "/settings",
+  //   icon: (
+  //     <SvgIcon fontSize="small">
+  //       <CogIcon />
+  //     </SvgIcon>
+  //   ),
+  // },
+  // {
+  //   title: "Login",
+  //   path: "/auth/login",
+  //   icon: (
+  //     <SvgIcon fontSize="small">
+  //       <LockClosedIcon />
+  //     </SvgIcon>
+  //   ),
+  // },
+  // {
+  //   title: "Register",
+  //   path: "/auth/register",
+  //   icon: (
+  //     <SvgIcon fontSize="small">
+  //       <UserPlusIcon />
+  //     </SvgIcon>
+  //   ),
+  // },
+
 ];

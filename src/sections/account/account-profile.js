@@ -10,11 +10,14 @@ import {
 } from '@mui/material';
 
 const user = {
-  avatar: '/assets/avatars/avatar-anika-visser.png',
-  city: 'Los Angeles',
-  country: 'USA',
+  avatar: '/assets/avatars/avatar-cao-yu.png',
+  city: 'Delhi',
+  country: 'IND',
+  class:'3A',
+  rollno:'25',
+  admission_no:'1022210EA',
   jobTitle: 'Senior Developer',
-  name: 'Anika Visser',
+  name: 'Sanjay Mohanty',
   timezone: 'GTM-7'
 };
 
@@ -46,13 +49,19 @@ export const AccountProfile = () => (
           color="text.secondary"
           variant="body2"
         >
-          {user.city} {user.country}
+          Class: {user.class}
         </Typography>
         <Typography
           color="text.secondary"
           variant="body2"
         >
-          {user.timezone}
+          {user.city} {user.country}
+        </Typography>
+        <Typography
+          color="text.secondary"
+          variant="overline"
+        >
+          ( {user.admission_no} )
         </Typography>
       </Box>
     </CardContent>

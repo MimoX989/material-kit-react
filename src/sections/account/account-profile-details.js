@@ -13,31 +13,34 @@ import {
 
 const states = [
   {
-    value: 'alabama',
-    label: 'Alabama'
+    value: 'delhi',
+    label: 'Delhi'
   },
   {
-    value: 'new-york',
-    label: 'New York'
+    value: 'mumbai',
+    label: 'Mumbai'
   },
   {
-    value: 'san-francisco',
-    label: 'San Francisco'
+    value: 'chennai',
+    label: 'Chennai'
   },
   {
-    value: 'los-angeles',
-    label: 'Los Angeles'
+    value: 'kolkata',
+    label: 'Kolkata'
   }
 ];
 
 export const AccountProfileDetails = () => {
   const [values, setValues] = useState({
-    firstName: 'Anika',
-    lastName: 'Visser',
-    email: 'demo@devias.io',
+    firstName: 'Sanjay',
+    lastName: 'Mohanty',
+    email: 'sanjaymohanty@gmail.com',
     phone: '',
-    state: 'los-angeles',
-    country: 'USA'
+    class:'3A',
+    rollno:'25',
+    admission_no:'100012EA',
+    state: 'delhi',
+    country: 'IND'
   });
 
   const handleChange = useCallback(
@@ -122,8 +125,10 @@ export const AccountProfileDetails = () => {
                   fullWidth
                   label="Phone Number"
                   name="phone"
+                  // pattern="[0-9]*"
                   onChange={handleChange}
-                  type="number"
+                  type="tel"
+                  inputProps={{  inputMode: 'tel', maxLength: 10 }}                  
                   value={values.phone}
                 />
               </Grid>
